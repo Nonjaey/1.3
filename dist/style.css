@@ -251,7 +251,8 @@ body {
     border-radius: 6px;
     line-height: 150%;
     letter-spacing: -0.2px;
-    color: #7e7e82; }
+    color: #7e7e82;
+    border: 2px solid transparent; }
     .navigation__link.active {
       background: #ffffff;
       border: 2px solid #b8ffec; }
@@ -262,7 +263,11 @@ body {
   .navigation__items {
     flex-wrap: wrap;
     height: 100%;
-    overflow-x: visible; } }
+    overflow-x: visible; }
+  .navigation__link {
+    transition: all 0.3s ease 0s; }
+    .navigation__link:hover {
+      border: 2px solid #b8ffec; } }
 
 .about__container {
   padding: 0; }
