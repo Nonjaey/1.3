@@ -1,0 +1,394 @@
+@import "base/nullstyle";
+
+$bg: #f8f8f8;
+$deep-pink: #ff3e79;
+$white: #ffffff;
+$aqua: #41f6d7;
+$menu-border: #b8ffec;
+$menu-link-color: #7e7e82;
+$text-color: #1b1c21;
+body {
+	background: $bg;
+	font-family: "TT Lakes";
+}
+.wrapper {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+	overflow: hidden;
+}
+._container {
+	max-width: 1120px;
+	margin: 0px auto;
+	padding: 0 15px;
+}
+._ibg {
+	position: relative;
+	& img {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		object-fit: cover;
+	}
+}
+.line {
+	position: relative;
+	padding: 0px 20px 0px 0px;
+	&::after {
+		content: "";
+		position: absolute;
+		right: 0px;
+		bottom: 4px;
+		background: #eaeaea;
+		border-radius: 1px;
+		width: 2px;
+		height: 32px;
+	}
+}
+.link-style {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 40px;
+	height: 40px;
+	border-radius: 20px;
+	background: $deep-pink;
+	position: relative;
+	&:not(:last-child) {
+		margin: 0px 16px 0px 0px;
+	}
+}
+
+//*-------------header-------------
+.header {
+	background: $white;
+	&__container {
+		height: 88px;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+	&__left {
+		display: flex;
+		gap: 20px;
+	}
+	&__menu {
+		display: flex;
+		align-items: center;
+		padding: 0px 0px 0px 0px;
+		&::after {
+			display: none;
+		}
+	}
+	&__logo {
+		&::after {
+			bottom: 8px;
+		}
+		& img {
+			vertical-align: middle;
+			width: 96px;
+			height: 50px;
+		}
+	}
+	&__link-menu {
+		display: flex;
+		gap: 20px;
+	}
+	&__contacts-body {
+		display: none;
+	}
+	&__link-body {
+		display: flex;
+	}
+}
+.icon-menu {
+	position: relative;
+	width: 40px;
+	height: 40px;
+	background: $deep-pink;
+	border-radius: 20px;
+	&::before,
+	&::after,
+	& span {
+		content: "";
+		position: absolute;
+		height: 2px;
+		border-radius: 1px;
+		background: #fff;
+		left: 11px;
+	}
+	& span {
+		width: 10px;
+		top: 19px;
+	}
+	&::before {
+		width: 18px;
+		top: 12px;
+	}
+	&::after {
+		width: 14px;
+		top: 26px;
+	}
+}
+
+//*-------------header-768-------------
+@media (min-width: 768px) {
+	.header {
+		&__menu {
+			padding: 0px 20px 0px 0px;
+			&::after {
+				display: block;
+			}
+		}
+		&__logo {
+			padding: 0px 0px 0px 0px;
+			&::after {
+				display: none;
+			}
+		}
+		&__contacts-body {
+			display: flex;
+		}
+	}
+}
+
+//*-------------page-------------
+.page {
+	margin: 25px 0px 50px 0px;
+	&__services {
+		margin: 24px 0px 0px 0px;
+	}
+}
+
+//*-------------services-------------
+.services {
+	&__title {
+		font-size: 28px;
+		line-height: 143%;
+		font-weight: 700;
+		letter-spacing: -0.6px;
+		color: $text-color;
+		position: relative;
+		&::before {
+			content: "";
+			position: absolute;
+			width: 4px;
+			height: 100%;
+			top: 0;
+			left: -14px;
+			background: $aqua;
+			border-radius: 2px;
+		}
+		&:not(:last-child) {
+			margin: 0px 0px 24px 0px;
+		}
+	}
+	&__navigation {
+		margin: 0px 0px 24px 0px;
+	}
+}
+
+//*-------------navigation-------------
+.navigation {
+	position: relative;
+	&::after {
+		content: "";
+		pointer-events: none;
+		position: absolute;
+		display: block;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		right: -35%;
+		background-image: linear-gradient(to right, rgba(255, 255, 255, 0) 45%, #f8f8f8 65%);
+	}
+	&__items {
+		display: flex;
+		gap: 20px 10px;
+		align-items: center;
+		justify-content: flex-start;
+		height: 42px;
+		overflow-x: auto;
+		scrollbar-width: none;
+		&::-webkit-scrollbar {
+			display: none;
+		}
+	}
+	&__link {
+		font-weight: 500;
+		white-space: nowrap;
+		padding: 8px 16px;
+		border-radius: 6px;
+		line-height: 150%;
+		letter-spacing: -0.2px;
+		color: $menu-link-color;
+		&.active {
+			background: #ffffff;
+			border: 2px solid $menu-border;
+		}
+	}
+}
+//*-------------navigation-1120-------------
+@media (min-width: 1120px) {
+	.navigation {
+		&::after {
+			display: none;
+		}
+		&__items {
+			flex-wrap: wrap;
+			height: 100%;
+			overflow-x: visible;
+		}
+	}
+}
+
+//*-------------about-------------
+.about {
+	&__container {
+		padding: 0;
+	}
+	&__info {
+		margin: 0px 0px 16px 0px;
+		padding: 0 15px;
+	}
+	&__text {
+		max-height: 100px;
+		overflow: hidden;
+		font-size: 14px;
+		line-height: 143%;
+		letter-spacing: 0.2px;
+		color: $text-color;
+		margin: 0px 0px 10px 0px;
+		& p:not(:last-child) {
+			margin: 0px 0px 20px 0px;
+		}
+	}
+	&__read-more {
+		font-weight: 700;
+		line-height: 150%;
+		font-size: 16px;
+		letter-spacing: -0.2px;
+		color: $text-color;
+		background: transparent;
+		padding: 0px 0px 0px 16px;
+		position: relative;
+		&::before {
+			content: "";
+			background: url("../img/arrow-down.svg") no-repeat;
+			background-size: cover;
+			position: absolute;
+			width: 8px;
+			height: 11px;
+			top: 25%;
+			left: 0;
+		}
+	}
+	&__image {
+		min-height: 176px;
+		background: $bg;
+		overflow: hidden;
+	}
+}
+
+//*-------------about-345-------------
+@media (min-width: 345px) {
+	.about {
+		&__text {
+			max-height: 140px;
+		}
+	}
+}
+
+//*-------------about-375-------------
+@media (min-width: 375px) {
+	.about {
+		&__container {
+			padding: 0 15px;
+		}
+		&__info {
+			padding: 0;
+		}
+		&__image {
+			overflow: hidden;
+			border-radius: 6px;
+			min-height: 210px;
+		}
+	}
+}
+
+//*-------------about-480-------------
+@media (min-width: 480px) {
+	.about {
+		&__container {
+			display: flex;
+			align-items: flex-start;
+			justify-content: space-between;
+			gap: 0 15px;
+		}
+		&__info {
+			margin: 0;
+		}
+		&__text {
+			max-height: 160px;
+		}
+		&__image {
+			min-width: 210px;
+			min-height: 146px;
+		}
+	}
+}
+
+//*-------------about-768-------------
+@media (min-width: 768px) {
+	.about {
+		&__container {
+			display: flex;
+			align-items: flex-start;
+			justify-content: space-between;
+			gap: 0 65px;
+		}
+		&__info {
+			margin: 10px 0px 0px 0px;
+		}
+		&__text {
+			-webkit-line-clamp: 7;
+			min-width: 312px;
+		}
+		&__image {
+			min-width: 360px;
+			height: 208px;
+		}
+	}
+}
+
+//*-------------about-914-------------
+@media (min-width: 914px) {
+	.about {
+		&__container {
+			gap: 0 35px;
+		}
+		&__text {
+			max-height: 100%;
+			overflow: visible;
+		}
+		&__read-more {
+			display: none;
+		}
+		&__image {
+			min-width: 460px;
+			height: 268px;
+		}
+	}
+}
+
+//*-------------about-1120-------------
+@media (min-width: 1120px) {
+	.about {
+		&__image {
+			min-width: 531px;
+			height: 307px;
+		}
+	}
+}
