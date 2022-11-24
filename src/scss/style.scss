@@ -35,12 +35,12 @@ body {
 }
 .line {
 	position: relative;
-	padding: 0px 20px 0px 0px;
-	&::after {
+	padding: 0px 22px 0px 0px;
+	&::before {
 		content: "";
 		position: absolute;
-		right: 0px;
-		bottom: 4px;
+		top: 8px;
+		right: 0;
 		background: #eaeaea;
 		border-radius: 1px;
 		width: 2px;
@@ -51,11 +51,14 @@ body {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	width: 40px;
-	height: 40px;
-	border-radius: 20px;
-	background: $deep-pink;
-	position: relative;
+	gap: 0px 8px;
+	&::after {
+		content: "";
+		width: 40px;
+		height: 40px;
+		border-radius: 20px;
+		background: $deep-pink;
+	}
 	&:not(:last-child) {
 		margin: 0px 16px 0px 0px;
 	}
@@ -72,20 +75,16 @@ body {
 	}
 	&__left {
 		display: flex;
-		gap: 20px;
 	}
 	&__menu {
 		display: flex;
 		align-items: center;
-		padding: 0px 0px 0px 0px;
-		&::after {
+		padding: 0px 15px 0px 0px;
+		&::before {
 			display: none;
 		}
 	}
 	&__logo {
-		&::after {
-			bottom: 8px;
-		}
 		& img {
 			vertical-align: middle;
 			width: 96px;
@@ -94,13 +93,24 @@ body {
 	}
 	&__link-menu {
 		display: flex;
-		gap: 20px;
 	}
 	&__contacts-body {
 		display: none;
 	}
 	&__link-body {
 		display: flex;
+	}
+	&__link {
+		&:nth-child(1) {
+			&::after {
+				background: url("../img/repair.svg") 0 0 no-repeat;
+			}
+		}
+		&:nth-child(2) {
+			&::after {
+				background: url("../img/status.svg") 0 0 no-repeat;
+			}
+		}
 	}
 }
 .icon-menu {
@@ -137,20 +147,50 @@ body {
 @media (min-width: 768px) {
 	.header {
 		&__menu {
-			padding: 0px 20px 0px 0px;
-			&::after {
+			padding: 0px 22px 0px 0px;
+			&::before {
 				display: block;
 			}
 		}
 		&__logo {
-			padding: 0px 0px 0px 0px;
-			&::after {
+			margin: 0px 0px 0px 20px;
+			&::before {
 				display: none;
 			}
 		}
 		&__contacts-body {
 			display: flex;
+			&::before {
+				top: 4px;
+			}
 		}
+		&__contacts-link {
+			&:nth-child(1) {
+				&::after {
+					background: url("../img/phone.svg") 0 0 no-repeat;
+				}
+			}
+			&:nth-child(2) {
+				&::after {
+					background: url("../img/message.svg") 0 0 no-repeat;
+				}
+			}
+			&:nth-child(3) {
+				&::after {
+					background: url("../img/contact.svg") 0 0 no-repeat;
+				}
+			}
+		}
+		&__link-body {
+			margin: 0px 0px 0px 20px;
+		}
+	}
+}
+
+//*-------------header-1120-------------
+@media (min-width: 1120px) {
+	.header {
+		display: none;
 	}
 }
 
@@ -164,6 +204,17 @@ body {
 
 //*-------------services-------------
 .services {
+	&__top {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		&:not(:last-child) {
+			margin: 0px 0px 24px 0px;
+		}
+	}
+	&__link-body {
+		display: none;
+	}
 	&__title {
 		font-size: 28px;
 		line-height: 143%;
@@ -181,15 +232,36 @@ body {
 			background: $aqua;
 			border-radius: 2px;
 		}
-		&:not(:last-child) {
-			margin: 0px 0px 24px 0px;
-		}
 	}
 	&__navigation {
 		margin: 0px 0px 24px 0px;
 	}
 }
-
+@media (min-width: 1120px) {
+	.services {
+		&__link-body {
+			display: flex;
+			align-items: center;
+		}
+		&__link {
+			font-size: 16px;
+			line-height: 24px;
+			letter-spacing: -0.2px;
+			color: $text-color;
+			font-weight: 500;
+			&:nth-child(1) {
+				&::after {
+					background: $deep-pink url("../img/repair.svg") 0 0 no-repeat;
+				}
+			}
+			&:nth-child(2) {
+				&::after {
+					background: $deep-pink url("../img/status.svg") 0 0 no-repeat;
+				}
+			}
+		}
+	}
+}
 //*-------------navigation-------------
 .navigation {
 	position: relative;

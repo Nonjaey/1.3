@@ -106,12 +106,12 @@ body {
 
 .line {
   position: relative;
-  padding: 0px 20px 0px 0px; }
-  .line::after {
+  padding: 0px 22px 0px 0px; }
+  .line::before {
     content: "";
     position: absolute;
-    right: 0px;
-    bottom: 4px;
+    top: 8px;
+    right: 0;
     background: #eaeaea;
     border-radius: 1px;
     width: 2px;
@@ -121,11 +121,13 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
-  border-radius: 20px;
-  background: #ff3e79;
-  position: relative; }
+  gap: 0px 8px; }
+  .link-style::after {
+    content: "";
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    background: #ff3e79; }
   .link-style:not(:last-child) {
     margin: 0px 16px 0px 0px; }
 
@@ -137,27 +139,27 @@ body {
     align-items: center;
     justify-content: space-between; }
   .header__left {
-    display: flex;
-    gap: 20px; }
+    display: flex; }
   .header__menu {
     display: flex;
     align-items: center;
-    padding: 0px 0px 0px 0px; }
-    .header__menu::after {
+    padding: 0px 15px 0px 0px; }
+    .header__menu::before {
       display: none; }
-  .header__logo::after {
-    bottom: 8px; }
   .header__logo img {
     vertical-align: middle;
     width: 96px;
     height: 50px; }
   .header__link-menu {
-    display: flex;
-    gap: 20px; }
+    display: flex; }
   .header__contacts-body {
     display: none; }
   .header__link-body {
     display: flex; }
+  .header__link:nth-child(1)::after {
+    background: url(./static/repair.svg) 0 0 no-repeat; }
+  .header__link:nth-child(2)::after {
+    background: url(./static/status.svg) 0 0 no-repeat; }
 
 .icon-menu {
   position: relative;
@@ -185,20 +187,44 @@ body {
 
 @media (min-width: 768px) {
   .header__menu {
-    padding: 0px 20px 0px 0px; }
-    .header__menu::after {
+    padding: 0px 22px 0px 0px; }
+    .header__menu::before {
       display: block; }
   .header__logo {
-    padding: 0px 0px 0px 0px; }
-    .header__logo::after {
+    margin: 0px 0px 0px 20px; }
+    .header__logo::before {
       display: none; }
   .header__contacts-body {
-    display: flex; } }
+    display: flex; }
+    .header__contacts-body::before {
+      top: 4px; }
+  .header__contacts-link:nth-child(1)::after {
+    background: url(./static/phone.svg) 0 0 no-repeat; }
+  .header__contacts-link:nth-child(2)::after {
+    background: url(./static/message.svg) 0 0 no-repeat; }
+  .header__contacts-link:nth-child(3)::after {
+    background: url(./static/contact.svg) 0 0 no-repeat; }
+  .header__link-body {
+    margin: 0px 0px 0px 20px; } }
+
+@media (min-width: 1120px) {
+  .header {
+    display: none; } }
 
 .page {
   margin: 25px 0px 50px 0px; }
   .page__services {
     margin: 24px 0px 0px 0px; }
+
+.services__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; }
+  .services__top:not(:last-child) {
+    margin: 0px 0px 24px 0px; }
+
+.services__link-body {
+  display: none; }
 
 .services__title {
   font-size: 28px;
@@ -216,11 +242,24 @@ body {
     left: -14px;
     background: #41f6d7;
     border-radius: 2px; }
-  .services__title:not(:last-child) {
-    margin: 0px 0px 24px 0px; }
 
 .services__navigation {
   margin: 0px 0px 24px 0px; }
+
+@media (min-width: 1120px) {
+  .services__link-body {
+    display: flex;
+    align-items: center; }
+  .services__link {
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: -0.2px;
+    color: #1b1c21;
+    font-weight: 500; }
+    .services__link:nth-child(1)::after {
+      background: #ff3e79 url(./static/repair.svg) 0 0 no-repeat; }
+    .services__link:nth-child(2)::after {
+      background: #ff3e79 url(./static/status.svg) 0 0 no-repeat; } }
 
 .navigation {
   position: relative; }
