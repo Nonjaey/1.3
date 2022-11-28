@@ -11,11 +11,32 @@ body {
 	background: $bg;
 	font-family: "TT Lakes";
 }
+body.lock {
+	overflow: hidden;
+}
 .wrapper {
 	display: flex;
 	flex-direction: column;
 	min-height: 100vh;
 	overflow: hidden;
+	&::before {
+		content: "";
+		z-index: 8;
+		position: fixed;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: -200%;
+		background: $white;
+		opacity: 0;
+		transition: opacity 0.3s ease 0s;
+	}
+	&.active {
+		&::before {
+			left: 0;
+			opacity: 0.9;
+		}
+	}
 }
 ._container {
 	max-width: 1120px;
@@ -52,6 +73,10 @@ body {
 	align-items: center;
 	justify-content: center;
 	gap: 0px 8px;
+	transition: all 0.15s ease 0s;
+	&:hover {
+		filter: grayscale(20%) drop-shadow(5px 5px 5px $text-color);
+	}
 	&::after {
 		content: "";
 		width: 40px;
@@ -59,8 +84,12 @@ body {
 		border-radius: 20px;
 		background: $deep-pink;
 	}
-	&:not(:last-child) {
-		margin: 0px 16px 0px 0px;
+}
+.logo {
+	& img {
+		vertical-align: middle;
+		width: 96px;
+		height: 50px;
 	}
 }
 
@@ -68,6 +97,7 @@ body {
 .header {
 	background: $white;
 	&__container {
+		overflow: auto;
 		height: 88px;
 		display: flex;
 		align-items: center;
@@ -85,22 +115,20 @@ body {
 		}
 	}
 	&__logo {
-		& img {
-			vertical-align: middle;
-			width: 96px;
-			height: 50px;
-		}
 	}
 	&__link-menu {
 		display: flex;
 	}
-	&__contacts-body {
+	&__contacts {
 		display: none;
 	}
 	&__link-body {
 		display: flex;
 	}
 	&__link {
+		&:not(:last-child) {
+			margin: 0px 16px 0px 0px;
+		}
 		&:nth-child(1) {
 			&::after {
 				background: url("../img/repair.svg") 0 0 no-repeat;
@@ -111,35 +139,6 @@ body {
 				background: url("../img/status.svg") 0 0 no-repeat;
 			}
 		}
-	}
-}
-.icon-menu {
-	position: relative;
-	width: 40px;
-	height: 40px;
-	background: $deep-pink;
-	border-radius: 20px;
-	&::before,
-	&::after,
-	& span {
-		content: "";
-		position: absolute;
-		height: 2px;
-		border-radius: 1px;
-		background: #fff;
-		left: 11px;
-	}
-	& span {
-		width: 10px;
-		top: 19px;
-	}
-	&::before {
-		width: 18px;
-		top: 12px;
-	}
-	&::after {
-		width: 14px;
-		top: 26px;
 	}
 }
 
@@ -158,27 +157,10 @@ body {
 				display: none;
 			}
 		}
-		&__contacts-body {
+		&__contacts {
 			display: flex;
 			&::before {
 				top: 4px;
-			}
-		}
-		&__contacts-link {
-			&:nth-child(1) {
-				&::after {
-					background: url("../img/phone.svg") 0 0 no-repeat;
-				}
-			}
-			&:nth-child(2) {
-				&::after {
-					background: url("../img/message.svg") 0 0 no-repeat;
-				}
-			}
-			&:nth-child(3) {
-				&::after {
-					background: url("../img/contact.svg") 0 0 no-repeat;
-				}
 			}
 		}
 		&__link-body {
@@ -194,6 +176,196 @@ body {
 	}
 }
 
+//*-------------contacts-------------
+.contacts {
+	&__contacts-link {
+		&:nth-child(1) {
+			&::after {
+				background: url("../img/phone.svg") 0 0 no-repeat;
+			}
+		}
+		&:nth-child(2) {
+			&::after {
+				background: url("../img/message.svg") 0 0 no-repeat;
+			}
+		}
+		&:nth-child(3) {
+			&::after {
+				background: url("../img/contact.svg") 0 0 no-repeat;
+			}
+		}
+		&:not(:last-child) {
+			margin: 0px 16px 0px 0px;
+		}
+	}
+}
+//*-------------menu-------------
+.icon-menu {
+	position: relative;
+	width: 40px;
+	height: 40px;
+	background: $deep-pink;
+	border-radius: 20px;
+	&::before {
+		content: "";
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+	}
+}
+.menu {
+	&__open {
+		&::before {
+			background: url("../img/open.svg") center center no-repeat;
+		}
+	}
+	&__container {
+		overflow: auto;
+		padding: 23px;
+		z-index: 10;
+		position: fixed;
+		width: 320px;
+		height: 100%;
+		top: 0;
+		left: 0;
+		background: $white;
+		box-shadow: -2px 0px 4px rgba(69, 79, 126, 0.02), 16px 0px 52px rgba(14, 24, 80, 0.2);
+		left: -200%;
+		transition: all 0.3s ease 0s;
+		&.active {
+			left: 0;
+		}
+	}
+	&__top {
+		display: flex;
+		align-items: center;
+		margin: 0px 0px 50px 0px;
+	}
+	&__close {
+		margin: 0px 17px 0px 0px;
+		transition: all 0.15s ease 0s;
+		&:hover {
+			filter: grayscale(20%) drop-shadow(5px 5px 5px $text-color);
+		}
+		&::before {
+			background: url("../img/close.svg") center center no-repeat;
+		}
+	}
+	&__search {
+		margin-left: auto;
+		transition: all 0.15s ease 0s;
+		&:hover {
+			filter: grayscale(20%) drop-shadow(5px 5px 5px $text-color);
+		}
+		&::before {
+			background: url("../img/search.svg") center center no-repeat;
+		}
+	}
+	&__body {
+		&:not(:last-child) {
+			margin: 0px 0px 32px 0px;
+		}
+	}
+
+	&__list {
+		display: flex;
+		flex-direction: column;
+	}
+
+	&__item {
+		&:not(:last-child) {
+			margin: 0px 0px 32px 0px;
+		}
+	}
+
+	&__link {
+		font-weight: 500;
+		font-size: 16px;
+		line-height: 150%;
+		letter-spacing: -0.2px;
+		color: $text-color;
+		transition: all 0.15s ease 0s;
+		&:hover {
+			filter: grayscale(80%) drop-shadow(5px 5px 5px $text-color);
+		}
+		&.active {
+			position: relative;
+			color: $menu-link-color;
+			&::before {
+				content: "";
+				position: absolute;
+				width: 6px;
+				height: 32px;
+				top: -5px;
+				left: -25px;
+				background: $aqua;
+				border-radius: 0px 8px 8px 0px;
+			}
+		}
+	}
+	&__contacts {
+		display: flex;
+		margin: 0px 0px 16px 0px;
+	}
+	&__info {
+		margin: 0px 0px 8px 0px;
+	}
+	&__email-link {
+		display: block;
+		font-weight: 500;
+		line-height: 150%;
+		letter-spacing: -0.2px;
+		color: $text-color;
+		margin: 0px 0px 12px 0px;
+		transition: all 0.15s ease 0s;
+		&:hover {
+			filter: grayscale(20%) drop-shadow(5px 5px 5px $text-color);
+		}
+	}
+	&__tel {
+		display: block;
+		font-weight: 700;
+		font-size: 24px;
+		line-height: 133%;
+		letter-spacing: -0.6px;
+		color: $text-color;
+		transition: all 0.15s ease 0s;
+		&:hover {
+			filter: grayscale(20%) drop-shadow(5px 5px 5px $text-color);
+		}
+	}
+	&__language-body {
+	}
+	&__language {
+		font-size: 16px;
+		font-weight: 500;
+		line-height: 150%;
+		letter-spacing: -0.2px;
+		color: $text-color;
+		background: transparent;
+		transition: all 0.15s ease 0s;
+		&:hover {
+			filter: grayscale(80%) drop-shadow(1px 1px 5px $text-color);
+		}
+		&:not(:last-child) {
+			margin: 0px 8px 0px 0px;
+		}
+		&.active {
+			color: $menu-link-color;
+		}
+	}
+}
+@media (min-width: 768px) {
+	.menu {
+		&__body {
+			&:not(:last-child) {
+				margin: 0px 0px 268px 0px;
+			}
+		}
+	}
+}
 //*-------------page-------------
 .page {
 	margin: 25px 0px 50px 0px;

@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Услуги и сервисы</title>
+	<title><%= htmlWebpackPlugin.options.title %></title>
 </head>
 <body>
 	<div class="wrapper">
@@ -12,20 +12,16 @@
 			<div class="header__container _container">
 				<div class="header__left">
 					<div class="header__menu menu line">
-						<button type="button" class="menu__icon icon-menu"><span></span></button>
-						<nav class="menu__body">
-							<ul class="menu__list">
-								<li class="menu__item"><a href="#" class="menu__link"></a></li>
-							</ul>
-						</nav>
+						<button type="button" class="menu__open icon-menu"><span></span></button>
+					<!-- ${require("html-loader!./menu.html")} -->
 					</div>
-					<a href="#" class="header__logo line"><img src="./img/logo.svg" alt="CPS"></a>
+					<a href="#" class="header__logo logo line"><img src="./img/logo.svg" alt="CPS"></a>
 				</div>
 				<div class="header__link-menu">
-					<div class="header__contacts-body line">
-						<a href="tel:88008908900" class="header__contacts-link link-style"></a>
-						<a href="mailto:mail@cps.com" class="header__contacts-link link-style"></a>
-						<a href="#" class="header__contacts-link link-style"></a>
+					<div class="header__contacts contacts line">
+						<a href="tel:88008908900" class="contacts__contacts-link link-style"></a>
+						<a href="mailto:mail@cps.com" class="contacts__contacts-link link-style"></a>
+						<a href="#" class="contacts__contacts-link link-style"></a>
 					</div>
 					<div class="header__link-body">
 						<a href="#" class="header__link link-style"></a>
