@@ -222,6 +222,10 @@ body.lock {
 		}
 	}
 	&__container {
+		&::-webkit-scrollbar {
+			display: none;
+		}
+		scrollbar-width: none;
 		overflow: auto;
 		padding: 23px;
 		z-index: 10;
@@ -421,6 +425,9 @@ body.lock {
 			letter-spacing: -0.2px;
 			color: $text-color;
 			font-weight: 500;
+			&:not(:last-child) {
+				margin: 0px 16px 0px 0px;
+			}
 			&:nth-child(1) {
 				&::after {
 					background: $deep-pink url("../img/repair.svg") 0 0 no-repeat;

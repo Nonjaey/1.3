@@ -234,6 +234,7 @@ body.lock {
   background: url(./static/open.svg) center center no-repeat; }
 
 .menu__container {
+  scrollbar-width: none;
   overflow: auto;
   padding: 23px;
   z-index: 10;
@@ -246,6 +247,8 @@ body.lock {
   box-shadow: -2px 0px 4px rgba(69, 79, 126, 0.02), 16px 0px 52px rgba(14, 24, 80, 0.2);
   left: -200%;
   transition: all 0.3s ease 0s; }
+  .menu__container::-webkit-scrollbar {
+    display: none; }
   .menu__container.active {
     left: 0; }
 
@@ -401,6 +404,8 @@ body.lock {
     letter-spacing: -0.2px;
     color: #1b1c21;
     font-weight: 500; }
+    .services__link:not(:last-child) {
+      margin: 0px 16px 0px 0px; }
     .services__link:nth-child(1)::after {
       background: #ff3e79 url(./static/repair.svg) 0 0 no-repeat; }
     .services__link:nth-child(2)::after {
