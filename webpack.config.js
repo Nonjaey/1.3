@@ -87,6 +87,10 @@ module.exports = {
       filename: 'menu.html',
       template: './src/menu.html'
     }),
+    new HtmlWebpackPlugin({
+      filename: 'brands.html',
+      template: './src/brands.html'
+    }),
 
     // Кладем стили в отдельный файлик
     new MiniCssExtractPlugin({
