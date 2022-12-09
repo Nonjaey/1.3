@@ -818,6 +818,12 @@ body.lock {
   .about__text p:not(:last-child) {
     margin: 0px 0px 20px 0px; }
 
+.about__read-more:after {
+  content: "Читать далее"; }
+
+.about__read-more.active:after {
+  content: "Скрыть"; }
+
 .about__image {
   min-height: 176px;
   background: #f8f8f8;
@@ -974,7 +980,11 @@ body.lock {
   .brands__item {
     flex: 0 1 31%; }
   .brands__show-more {
-    display: block; } }
+    display: block; }
+    .brands__show-more:after {
+      content: "Показать все"; }
+    .brands__show-more.active:after {
+      content: "Скрыть"; } }
 
 @media (min-width: 1000px) {
   .brands__item {

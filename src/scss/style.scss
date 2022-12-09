@@ -565,6 +565,12 @@ body.lock {
 		}
 	}
 	&__read-more {
+		&:after {
+			content: "Читать далее";
+		}
+		&.active:after {
+			content: "Скрыть";
+		}
 	}
 	&__image {
 		min-height: 176px;
@@ -796,6 +802,12 @@ body.lock {
 		}
 		&__show-more {
 			display: block;
+			&:after {
+				content: "Показать все";
+			}
+			&.active:after {
+				content: "Скрыть";
+			}
 		}
 	}
 }

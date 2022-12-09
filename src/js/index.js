@@ -27,22 +27,13 @@ const showMore = document.querySelectorAll('.show-more')
 showMore.forEach((toggler) => {
   toggler.addEventListener('click', (e) => {
     e.preventDefault()
-    const targetId = toggler.getAttribute('data-target')
-    const targetElem = document.querySelector(targetId)
+    const brands = document.querySelector('.brands__items')
+    const about = document.querySelector('.about__text')
     toggler.classList.toggle('active')
-    targetElem.classList.toggle('active')
-    if (toggler.classList.contains('active')) {
-      toggler.innerHTML = 'Скрыть'
-    } else if (
-      toggler.classList.contains('about__read-more') &&
-      !toggler.classList.contains('active')
-    ) {
-      toggler.innerHTML = 'Читать далее'
-    } else if (
-      toggler.classList.contains('brands__show-more') &&
-      !toggler.classList.contains('active')
-    ) {
-      toggler.innerHTML = 'Показать все'
+    if (toggler.classList.contains('brands__show-more')) {
+      brands.classList.toggle('active')
+    } else if (toggler.classList.contains('about__read-more')) {
+      about.classList.toggle('active')
     }
   })
 })
